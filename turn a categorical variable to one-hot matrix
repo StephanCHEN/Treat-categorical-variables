@@ -1,7 +1,8 @@
 def one_hot_matrix(df, var):
 
     "
-    The input should be the name of column, which is a string,
+    df: the original dataframe
+    var:  the name of column, which is a string,
     "
     enc = LabelEncoder()
     enc.fit(df[[var]])

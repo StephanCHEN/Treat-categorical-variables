@@ -1,0 +1,18 @@
+def one_hot_matrix(df, var):
+
+    "
+    The input should be the name of column, which is a string,
+    "
+    enc = LabelEncoder()
+    enc.fit(df[[var]])
+    df[var] = enc.transform(df[[var]])
+
+    d= dict()
+    for i in range(len(df[var].unique())):
+        d[i] = enc.classes_[i]
+    
+    ohe = OneHotEncoder(sparse=False)
+    ohe.fit(df[[var]])
+    dataframe = pd.DataFrame(ohe.transform(df[[var]])).rename(columns=d)
+    
+    return dataframe
